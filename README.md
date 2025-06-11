@@ -1,13 +1,1 @@
 # server-NakazatoTaichi
-
-## 1回目の授業
-```bash
-# ssh鍵を作る
-ssh-keygen -t ed25519
-
-# リポジトリをcloneする
-git clone git@github.com:kdg-server-2025/server-NakazatoTaichi.git
-
-# リポジトリに移動する
-cd server-NakazatoTaichi
-```
