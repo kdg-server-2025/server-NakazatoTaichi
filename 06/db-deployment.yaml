@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb:11.8.1-ubi9-rc
+        ports:
+        - containerPort: 3306
+        envFrom:
+          - secretRef:
+              name: wordpress-secret
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: db-data-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: db-data-storage
+        persistentVolumeClaim:
+          claimName: db-data-pvc
