@@ -20,13 +20,20 @@ spec:
         envFrom:
           - secretRef:
               name: wordpress-secret
+        # resources:
+        #   requests:
+        #     memory: "256Mi"
+        #     cpu: "250m"
+        #   limits:
+        #     memory: "512Mi"
+        #     cpu: "500m"
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "250m"
+            memory: "300Mi"
+            cpu: "300m"
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "900Mi"
+            cpu: "600m"
         volumeMounts:
         - name: db-data-storage
           mountPath: /var/lib/mysql
